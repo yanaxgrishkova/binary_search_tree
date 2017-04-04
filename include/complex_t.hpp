@@ -1,40 +1,28 @@
+#pragma once
+
 #include <iostream>
+#include <fstream>
 
-using namespace std;
-
-class complex_t
+template <typename T>
+class BinarySearchTree
 {
-private:
-	float real;
-	float imaginary;
 public:
-	complex_t();
+	struct Node
+	{
+		Node* leftNode;
+		Node* rightNode;
+		T value;
+	};
 
-	complex_t(float rl, float img);
+private:
+	Node* _root;
 
-	complex_t(const complex_t&copy);
-
-	float real_() const;
-
-	float imaginary_() const;
-
-	complex_t operator * (const complex_t& c2) const;
-
-	complex_t operator / (const complex_t& c2) const;
-
-	complex_t& operator += (const complex_t& c2);
-
-	complex_t& operator -= (const complex_t& c2);
-
-	complex_t& operator *= (const complex_t& c2);
-
-	complex_t& operator /= (const complex_t& c2);
-
-	complex_t& operator = (const complex_t& result); 
-
-	bool operator == (const complex_t& c2);
-
-	friend istream& operator >> (istream&cin, complex_t& result);
-
-	friend ostream& operator << (ostream&cout, complex_t& result);
+public:
+	BinarySearchTree();
+	~BinarySearchTree();
+	void insertElement(T value);
+	bool findElement(T value) const;
+	void infile(std::string filename);
+	void outfile(Node* root, std::ostream& outfile);
+	void out(std::string filename);
 };
