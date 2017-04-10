@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <fstream>
 
@@ -50,6 +52,8 @@ public:
 	void outfile(Node<T>* root, std::ostream& outfile);
 
 	void out(std::string filename);
+
+	void paintTree(const Node<T>* node, int level) const;
 };
 
 template <typename T>
@@ -214,12 +218,12 @@ void BinarySearchTree<T>::out(std::string filename)
 }
 
 template <typename <T>
-void BinarySearchTree::display(const Node<T>* node, int level) const
+void BinarySearchTree::paintTree(const Node<T>* node, int level) const
 {
 
 	if (node)
 	{
-		display (node->rightNode, level++);
+		paintTree(node->rightNode, level++);
 
 		for (int i = 0; i < level; i++)
 		{
@@ -227,6 +231,6 @@ void BinarySearchTree::display(const Node<T>* node, int level) const
 		}	
 
 		std::cout << node->value << std::endl;
-		display(node->leftNode, level ++);
+		paintTree(node->leftNode, level++);
 	}
 }
