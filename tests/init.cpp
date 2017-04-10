@@ -23,5 +23,5 @@ SCENARIO("insertElement")
 	bst.insert(7);
 	bool a;
 	a = bst.isFound(7);
-	REQUIRE( a == true);
+	REQUIRE( a == 1);
 }
