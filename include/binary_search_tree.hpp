@@ -234,7 +234,7 @@ void BinarySearchTree<T>::out(std::string filename)
 	ofile.close();
 }
 
-template <typename <T>
+template <typename T>
 void BinarySearchTree<T>::paintTree(const Node<T>* node, int level) const
 {
 	if (node)
