@@ -60,13 +60,13 @@ public:
 };
 
 template <typename T>
-BinarySearchTree<T>::T value_() const
+T BinarySearchTree<T>::value_() const
 {
 	return _root->value;
 }
 
 template <typename T>
-BinarySearchTree<T>::T count() const
+T BinarySearchTree<T>::count() const
 {
 	return _count;
 }
