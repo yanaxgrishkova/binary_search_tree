@@ -12,7 +12,7 @@ SCENARIO("insertElement")
 {
 	BinarySearchTree<int> bst;
 	bst.insert(7);
-	REQUIRE(bts.value_() == 7);
-	REQUIRE(bts.leftNode_() == nullptr);
-	REQUIRE(bts.rightNode_() == nullptr);
+	REQUIRE(bst.value_() == 7);
+	REQUIRE(bst.leftNode_() == nullptr);
+	REQUIRE(bst.rightNode_() == nullptr);
 }
