@@ -8,6 +8,7 @@ template <typename T>
 class BinarySearchTree
 {
 public:
+	template <typename T>
 	struct Node
 	{
 		Node<T>* leftNode;
