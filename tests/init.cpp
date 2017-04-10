@@ -11,8 +11,8 @@ SCENARIO("default constructor")
 SCENARIO("insertElement")
 {
 	BinarySearchTree<int> bst;
-	bst.isInserted(7);
-	bool n=bst.isFound(7);
-	REQUIRE(n==1);
-	REQUIRE(bst.count() == 1);
+	bst.insert(7);
+	REQUIRE(bts.value_() == 7);
+	REQUIRE(bts.leftNode_() == nullptr);
+	REQUIRE(bts.rightNode_() == nullptr);
 }
