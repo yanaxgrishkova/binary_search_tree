@@ -45,7 +45,7 @@ public:
 
 	void insertElement(Node<T>* &node, const T &value);
 
-	bool isInserted(const T& value);
+	void insert(const T& value);
 
 	Node<T>* findElement(const T& value) const;
 
