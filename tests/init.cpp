@@ -17,7 +17,7 @@ SCENARIO("insertElement")
 	REQUIRE(bst.rightNode_() == nullptr);
 }
 
-SCENARIO("insertElement")
+SCENARIO("findElement")
 {
 	BinarySearchTree<int> bst;
 	bst.insert(7);
