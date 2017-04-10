@@ -2,27 +2,26 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
 
+template <typename T>
+struct Node
+{
+	Node<T>* leftNode;
+	Node<T>* rightNode;
+	T value;
+
+	Node(int value)
+	{
+		this->value = value;
+		leftNode = nullptr;
+		rightNode = nullptr;
+	}
+};
 
 template <typename T>
 class BinarySearchTree
 {
-public:
-	template <typename T>
-	struct Node
-	{
-		Node<T>* leftNode;
-		Node<T>* rightNode;
-		T value;
-
-		Node(int value)
-		{
-			this->value = value;
-			leftNode = nullptr;
-			rightNode = nullptr;
-		}
-	};
-
 private:
 	Node<T>* _root;
 	int _count;
