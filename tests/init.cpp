@@ -16,3 +16,12 @@ SCENARIO("insertElement")
 	REQUIRE(bst.leftNode_() == nullptr);
 	REQUIRE(bst.rightNode_() == nullptr);
 }
+
+SCENARIO("insertElement")
+{
+	BinarySearchTree<int> bst;
+	bst.insert(7);
+	bool a;
+	a = bst.isFound(7);
+	REQUIRE( a == true);
+}
