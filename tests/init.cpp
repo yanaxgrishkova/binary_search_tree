@@ -3,33 +3,33 @@
 
 SCENARIO("default constructor") 
 {
-	Node<int> n;
-	REQUIRE(n.root() == nullptr);
-	REQUIRE(n.count() == 0);
+	BinarySearchTree<int> bst;
+	REQUIRE(bst.root() == nullptr);
+	REQUIRE(bst.count() == 0);
 }
 
 SCENARIO("insertElement")
 {
-	Node<int> n;
-	n.insert(7);
-	REQUIRE(n.findElement() == 7);
-	REQUIRE(n.count() == 1);
+	BinarySearchTree<int> bst;
+	bst.insert(7);
+	REQUIRE(bst.findElement() == 7);
+	REQUIRE(bst.count() == 1);
 }
 
 SCENARIO("findElement")
 {
-	Node<int> n;
+	BinarySearchTree<int> bst;
 	bool a;
-	tree.insert(7);
-	a = tree.isFound(7);
+	bst.insert(7);
+	a = bst.isFound(7);
 	REQUIRE(a == true);
 }
 
 SCENARIO("out")
 {
-	  Node<int> n1;
-	  n.out("file3.txt");
-	  Node<int> n2;
-	  n2.out("file3.txt");
-	  REQUIRE(n1.count() == n2.count());
+	  BinarySearchTree<int> bst1;
+	  bst1.out("file3.txt");
+	  BinarySearchTree<int> bst2;
+	  bst2.out("file3.txt");
+	  REQUIRE(bst1.count() == bst2.count());
 }
