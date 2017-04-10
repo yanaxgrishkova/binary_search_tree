@@ -109,7 +109,7 @@ void BinarySearchTree<T>::destroyTree(Node<T>* node)
 		node->leftNode = nullptr;
 	}
 
-	if (temp->pRight)
+	if (node->rightNode)
 	{		
 		destroyTree(node->rightNode);
 		node->rightNode = nullptr;
@@ -234,9 +234,8 @@ void BinarySearchTree<T>::out(std::string filename)
 }
 
 template <typename <T>
-void BinarySearchTree::paintTree(const Node<T>* node, int level) const
+void BinarySearchTree<T>::paintTree(const Node<T>* node, int level) const
 {
-
 	if (node)
 	{
 		paintTree(node->rightNode, level++);
