@@ -1,5 +1,3 @@
-#pragma once
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -125,7 +123,7 @@ BinarySearchTree<T>::~BinarySearchTree()
 }
 
 template <typename T>
-void BinarySearchTree<T>::insertElement(Node<T>* &node, const T &value);
+void BinarySearchTree<T>::insertElement(Node<T>* &node, const T &value)
 {
 	if (node)
 	{
