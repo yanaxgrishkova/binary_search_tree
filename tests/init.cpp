@@ -12,6 +12,7 @@ SCENARIO("insertElement")
 {
 	BinarySearchTree<int> bst;
 	bst.insertElement(7);
-	REQUIRE(bst.findElement() == 7);
+	bool n=bst.isFound(7);
+	REQUIRE(n=1);
 	REQUIRE(bst.count() == 1);
 }
