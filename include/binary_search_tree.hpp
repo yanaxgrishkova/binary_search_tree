@@ -65,6 +65,12 @@ BinarySearchTree<T>::T value_() const
 }
 
 template <typename T>
+BinarySearchTree<T>::T count() const
+{
+	return _count;
+}
+
+template <typename T>
 Node<T>* BinarySearchTree<T>::root() const
 {
 	return _root;
