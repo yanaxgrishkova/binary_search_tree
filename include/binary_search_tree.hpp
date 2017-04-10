@@ -149,7 +149,7 @@ void BinarySearchTree<T>::insertElement(Node<T>* &node, const T &value)
 template <typename T>
 void BinarySearchTree<T>::insert(const T& value)
 {
-	insertElement(root, value);
+	insertElement(root->value, value);
 }
 
 template <typename T>
