@@ -38,6 +38,8 @@ public:
 	Node<T>* leftNode_() const;
 
 	Node<T>* rightNode_() const;
+	
+	Node<T>* root() const;
 
 	void insertElement(Node<T>* &node, const T &value);
 
@@ -61,6 +63,13 @@ BinarySearchTree<T>::T value_() const
 {
 	return _root->value;
 }
+
+template <typename T>
+Node<T>* BinarySearchTree<T>::root() const
+{
+	return _root;
+}
+
 
 template <typename T>
 Node<T>* BinarySearchTree<T>::leftNode_() const
