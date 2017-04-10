@@ -129,11 +129,11 @@ void BinarySearchTree<T>::insertElement(Node<T>* &node, const T &value)
 	{
 		if (value < node->value)
 		{
-			insert(node->leftNode, value);
+			insertElement(node->leftNode, value);
 		}
 		else if (value > node->value)
 		{
-			insert(node->rightNode, value);
+			insertElement(node->rightNode, value);
 		}
 		else
 		{
