@@ -8,3 +8,10 @@ SCENARIO("default constructor")
 	REQUIRE(bst.count() == 0);
 }
 
+SCENARIO("insertElement")
+{
+	BinarySearchTree<int> bst;
+	bst.insert(7);
+	REQUIRE(bst.findElement() == 7);
+	REQUIRE(bst.count() == 1);
+}
