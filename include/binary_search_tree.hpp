@@ -125,7 +125,7 @@ BinarySearchTree<T>::~BinarySearchTree()
 }
 
 template <typename T>
-void BinarySearchTree<T>::insertElement(const T &value, Node<T>* &node=0)
+void BinarySearchTree<T>::insertElement(Node<T>* &node, const T &value);
 {
 	if (node)
 	{
@@ -150,13 +150,9 @@ void BinarySearchTree<T>::insertElement(const T &value, Node<T>* &node=0)
 }
 
 template <typename T>
-bool BinarySearchTree<T>::isInserted(const T& value)
+void BinarySearchTree<T>::insert(const T& value)
 {
-	Node<T> *retNode = insertElement( value);
-	if (retNode)
-		return true;
-	else
-		return false;
+	insert(root, value);
 }
 
 template <typename T>
