@@ -36,6 +36,8 @@ public:
 
 	T value_() const;
 	
+	T count() const;
+	
 	Node<T>* leftNode_() const;
 
 	Node<T>* rightNode_() const;
