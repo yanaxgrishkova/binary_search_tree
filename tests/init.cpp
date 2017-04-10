@@ -11,9 +11,8 @@ SCENARIO("insertElement")
 {
 	Node<int> n;
 	n.insert(7);
-	REQUIRE(n.value_() == 7);
-	REQUIRE(n.leftNode_() == nullptr);
-	REQUIRE(n.rightNode_() == nullptr);
+	REQUIRE(n.findElement() == 7);
+	REQUIRE(n.count() == 1);
 }
 
 SCENARIO("findElement")
