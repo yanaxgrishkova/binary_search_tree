@@ -144,7 +144,6 @@ void BinarySearchTree<T>::insertElement(Node<T>* &node, const T &value)
 	{
 		node = new Node<T>(value);
 	}
-	_count++;
 }
 
 template <typename T>
