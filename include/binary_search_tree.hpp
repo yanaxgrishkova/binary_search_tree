@@ -32,7 +32,6 @@ public:
 	~BinarySearchTree();
 
 	T value_() const;
-	T count() const;
 	int count() const;
 	
 	Node<T>* leftNode_() const;
