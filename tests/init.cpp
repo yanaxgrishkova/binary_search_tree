@@ -27,5 +27,5 @@ SCENARIO("infile")
 {
 	BinarySearchTree<int> bst;
 	bst.infile("file.txt");
-	REQUIRE( bst.count() == 1);
+	REQUIRE( bst.count() == 0);
 }
