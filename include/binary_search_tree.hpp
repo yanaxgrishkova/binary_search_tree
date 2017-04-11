@@ -185,7 +185,7 @@ void BinarySearchTree<T>::infile(std::string filename)
 	while (count--)
 	{
 		infile >> value;
-		insertElement(value);
+		insert(value);
 	}
 
 	infile.close();
