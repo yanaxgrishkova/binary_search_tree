@@ -94,7 +94,6 @@ template <typename T>
 BinarySearchTree<T>::BinarySearchTree()
 {
 	_root = nullptr;
-	_count = 0;
 }
 
 template <typename T>
