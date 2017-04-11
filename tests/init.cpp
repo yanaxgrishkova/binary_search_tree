@@ -23,3 +23,9 @@ SCENARIO("findElement")
 	REQUIRE( bst.isFound(7) == 1);
 }
 
+SCENARIO("infile")
+{
+	BinarySearchTree<int> bst;
+	bst.infile("file3.txt");
+	REQUIRE( bst.isFound(1) == 1);
+}
