@@ -22,39 +22,29 @@ class BinarySearchTree
 {
 private:
 	Node<T>* _root;
-	int _count;
+	void destroyTree(Node<T>* node);
+	void insertElement(Node<T>* &node, const T &value);
+	Node<T>* findElement(const T& value) const;
+	int _count(const Node<T>* node) const;
 
 public:
 	BinarySearchTree();
-
-	void destroyTree(Node<T>* node);
-
 	~BinarySearchTree();
 
 	T value_() const;
-	
 	T count() const;
+	int count() const;
 	
 	Node<T>* leftNode_() const;
-
 	Node<T>* rightNode_() const;
-	
 	Node<T>* root() const;
 
-	void insertElement(Node<T>* &node, const T &value);
-
 	void insert(const T& value);
-
-	Node<T>* findElement(const T& value) const;
-
 	bool isFound(const T& value) const;
-
+	
 	void infile(std::string filename);
-
 	void outfile(Node<T>* root, std::ostream& outfile);
-
 	void out(std::string filename);
-
 	void paintTree(const Node<T>* node, int level) const;
 };
 
@@ -65,9 +55,21 @@ T BinarySearchTree<T>::value_() const
 }
 
 template <typename T>
-T BinarySearchTree<T>::count() const
+int BinarySearchTree<T>::_count(const Node<T>* node) const
 {
-	return _count;
+	if (!node)
+		return 0;
+	else
+		return (node->leftNode != 0) + (node->rightNode != 0) + _count(node->leftNode) + _count(node->rightNode);
+}
+
+template <typename T>
+int BinarySearchTree<T>::count() const
+{
+	if (_root)
+		return _count(_root) + 1;
+	else
+		return 0;
 }
 
 template <typename T>
@@ -102,17 +104,9 @@ void BinarySearchTree<T>::destroyTree(Node<T>* node)
 	if (!node)
 		return;
 
-	if (node->leftNode)
-	{
-		destroyTree(node->leftNode);
-		node->leftNode = nullptr;
-	}
+	destroyTree(node->leftNode);
+	destroyTree(node->rightNode);
 
-	if (node->rightNode)
-	{		
-		destroyTree(node->rightNode);
-		node->rightNode = nullptr;
-	}
 	delete node;
 }
 
@@ -187,17 +181,16 @@ void BinarySearchTree<T>::infile(std::string filename)
 	std::ifstream infile;
 	infile.open(filename);
 	T value;
-	infile >> _count;
-	infile >> value;
+	int count;
+	infile >> count;
 
-	while (infile)
+	while (count--)
 	{
 		infile >> value;
 		insertElement(value);
 	}
 
 	infile.close();
-	_count /= 2;
 }
 
 template <typename T>
