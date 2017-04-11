@@ -20,7 +20,6 @@ SCENARIO("findElement")
 {
 	BinarySearchTree<int> bst;
 	bst.insert(7);
-	bool a;
-	a = bst.isFound(7);
-	REQUIRE( a == 1);
+	REQUIRE( bst.isFound(7) == 1);
 }
+
