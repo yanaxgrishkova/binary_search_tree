@@ -29,3 +29,12 @@ SCENARIO("infile")
 	bst.infile("file.txt");
 	REQUIRE( bst.count() == 0);
 }
+
+SCENARIO("count")
+{
+	BinarySearchTree<int> bst;
+	int size = 0;
+	bst.insert(7);
+	size = bst.size(bst.root())
+	REQUIRE( size == 1);
+}
