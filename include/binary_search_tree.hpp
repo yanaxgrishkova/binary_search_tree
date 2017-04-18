@@ -196,7 +196,7 @@ void BinarySearchTree<T>::outfile(Node<T>* root, std::ostream& ofile)
 {
 	if (!root)
 		return;
-
+	
 	else
 	{
 		ofile << root->value << "\t";
