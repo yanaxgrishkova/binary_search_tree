@@ -30,7 +30,7 @@ SCENARIO("infile")
 	REQUIRE(bst.count() == 0);
 }
 
-SCENARIO("count")
+SCENARIO("_count")
 {
 	BinarySearchTree<int> bst;
 	int count = 0;
