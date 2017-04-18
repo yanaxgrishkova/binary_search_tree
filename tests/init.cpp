@@ -33,8 +33,8 @@ SCENARIO("infile")
 SCENARIO("count")
 {
 	BinarySearchTree<int> bst;
-	int size = 0;
+	int count = 0;
 	bst.insert(7);
-	size = bst.size(bst.root())
-	REQUIRE( size == 1);
+	size = bst.count(bst.root())
+	REQUIRE( count == 1);
 }
