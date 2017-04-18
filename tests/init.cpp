@@ -20,14 +20,14 @@ SCENARIO("findElement")
 {
 	BinarySearchTree<int> bst;
 	bst.insert(7);
-	REQUIRE( bst.isFound(7) == 1);
+	REQUIRE(bst.isFound(7) == 1);
 }
 
 SCENARIO("infile")
 {
 	BinarySearchTree<int> bst;
 	bst.infile("file.txt");
-	REQUIRE( bst.count() == 0);
+	REQUIRE(bst.count() == 0);
 }
 
 SCENARIO("count")
