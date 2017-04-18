@@ -66,7 +66,7 @@ template <typename T>
 int BinarySearchTree<T>::count() const
 {
 	if (_root)
-		return _count(_root);
+		return _count(_root) + 1;
 	else
 		return 0;
 }
