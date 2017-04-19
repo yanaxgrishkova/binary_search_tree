@@ -198,7 +198,7 @@ void BinarySearchTree<T>::outfile(Node<T>* root, std::ostream& ofile) const
 
 template <typename T>
 void BinarySearchTree<T>::out(std::string filename) const
-{' 
+{
 	std::ofstream ofile(filename);
 	int count = count_(_root);
 	if (!ofile)
