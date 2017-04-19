@@ -42,8 +42,8 @@ public:
 	bool isFound(const T& value) const;
 	
 	void infile(std::string filename);
-	void outfile(Node<T>* root, std::ostream& outfile);
-	void out(std::string filename);
+	void outfile(Node<T>* root, std::ostream& outfile) const;
+	void out(std::string filename) const;
 	void paintTree(const Node<T>* node, int level) const;
 };
 
@@ -183,7 +183,7 @@ void BinarySearchTree<T>::infile(std::string filename)
 }
 
 template <typename T>
-void BinarySearchTree<T>::outfile(Node<T>* root, std::ostream& ofile)
+void BinarySearchTree<T>::outfile(Node<T>* root, std::ostream& ofile) const
 {
 	if (!root)
 		return;
