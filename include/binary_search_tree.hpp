@@ -200,7 +200,7 @@ template <typename T>
 void BinarySearchTree<T>::out(std::string filename) const
 {' 
 	std::ofstream ofile(filename);
-	int count = _count(root_);
+	int count = _count(_root);
 	if (!ofile)
 		std::cout << "Error! Please, try again!" << std::endl;
 	else
@@ -208,7 +208,7 @@ void BinarySearchTree<T>::out(std::string filename) const
 		outfile(root, ofile);
 	ofile.close();
 }
-i
+
 template <typename T>
 void BinarySearchTree<T>::paintTree(const Node<T>* node, int level) const
 {
