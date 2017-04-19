@@ -27,14 +27,14 @@ SCENARIO("infile")
 {
 	BinarySearchTree<int> bst;
 	bst.infile("file.txt");
-	REQUIRE(bst.count() == 0);
+	REQUIRE(bst.count_() == 0);
 }
 
-SCENARIO("count")
+SCENARIO("count_")
 {
 	BinarySearchTree<int> bst;
 	int count = 0;
 	bst.insert(7);
-	count = bst.count();
+	count = bst.count_();
 	REQUIRE(count == 1);
 }
