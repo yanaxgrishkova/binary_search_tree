@@ -190,7 +190,7 @@ void BinarySearchTree<T>::outfile(Node<T>* root, std::ostream& ofile) const
 
 	else
 	{
-		ofile << root->value << "\t";
+		ofile << root->value << " ";
 		outfile(root->rightNode, ofile);
 		outfile(root->leftNode, ofile);
 	}
