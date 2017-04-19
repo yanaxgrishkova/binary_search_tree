@@ -25,14 +25,14 @@ private:
 	void destroyTree(Node<T>* node);
 	void insertElement(Node<T>* &node, const T &value);
 	Node<T>* findElement(const T& value) const;
-	int _count(const Node<T>* node) const;
+	
 
 public:
 	BinarySearchTree();
 	~BinarySearchTree();
 
 	T value_() const;
-	int count() const;
+	int count_(const Node<T>* node) const;
 	
 	Node<T>* leftNode_() const;
 	Node<T>* rightNode_() const;
@@ -59,16 +59,7 @@ int BinarySearchTree<T>::_count(const Node<T>* node) const
 	if (!node)
 		return 0;
 	else
-		return (node->leftNode != 0) + (node->rightNode != 0) + _count(node->leftNode) + _count(node->rightNode);
-}
-
-template <typename T>
-int BinarySearchTree<T>::count() const
-{
-	if (_root)
-		return _count(_root) + 1;
-	else
-		return 0;
+		return _count(node->leftNode) + _count(node->rightNode) + 1;
 }
 
 template <typename T>
@@ -179,7 +170,7 @@ void BinarySearchTree<T>::infile(std::string filename)
 	std::ifstream infile;
 	infile.open(filename);
 	T value;
-	int count;
+	int coun;
 	infile >> count;
 
 	while (count--)
@@ -196,7 +187,7 @@ void BinarySearchTree<T>::outfile(Node<T>* root, std::ostream& ofile)
 {
 	if (!root)
 		return;
-	
+
 	else
 	{
 		ofile << root->value << "\t";
@@ -206,18 +197,18 @@ void BinarySearchTree<T>::outfile(Node<T>* root, std::ostream& ofile)
 }
 
 template <typename T>
-void BinarySearchTree<T>::out(std::string filename)
-{
-	Node<T>* root;
+void BinarySearchTree<T>::out(std::string filename) const
+{' 
 	std::ofstream ofile(filename);
-
+	int count = _count(root_);
 	if (!ofile)
 		std::cout << "Error! Please, try again!" << std::endl;
 	else
-		out(root, ofile);
+		ofile << count << " ";
+		outfile(root, ofile);
 	ofile.close();
 }
-
+i
 template <typename T>
 void BinarySearchTree<T>::paintTree(const Node<T>* node, int level) const
 {
