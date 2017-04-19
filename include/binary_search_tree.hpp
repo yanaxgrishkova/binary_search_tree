@@ -54,12 +54,12 @@ T BinarySearchTree<T>::value_() const
 }
 
 template <typename T>
-int BinarySearchTree<T>::_count(const Node<T>* node) const
+int BinarySearchTree<T>::count_(const Node<T>* node) const
 {
 	if (!node)
 		return 0;
 	else
-		return _count(node->leftNode) + _count(node->rightNode) + 1;
+		return count_(node->leftNode) + count_(node->rightNode) + 1;
 }
 
 template <typename T>
@@ -170,7 +170,7 @@ void BinarySearchTree<T>::infile(std::string filename)
 	std::ifstream infile;
 	infile.open(filename);
 	T value;
-	int coun;
+	int count;
 	infile >> count;
 
 	while (count--)
@@ -200,7 +200,7 @@ template <typename T>
 void BinarySearchTree<T>::out(std::string filename) const
 {' 
 	std::ofstream ofile(filename);
-	int count = _count(_root);
+	int count = count_(_root);
 	if (!ofile)
 		std::cout << "Error! Please, try again!" << std::endl;
 	else
