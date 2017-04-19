@@ -35,6 +35,6 @@ SCENARIO("count_")
 	BinarySearchTree<int> bst;
 	int count = 0;
 	bst.insert(7);
-	count = bst.count_();
+	count = bst.count_(bst.root ());
 	REQUIRE(count == 1);
 }
