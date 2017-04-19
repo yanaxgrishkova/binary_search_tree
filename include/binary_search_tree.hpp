@@ -205,7 +205,7 @@ void BinarySearchTree<T>::out(std::string filename) const
 		std::cout << "Error! Please, try again!" << std::endl;
 	else
 		ofile << count << " ";
-		outfile(root, ofile);
+		outfile(_root, ofile);
 	ofile.close();
 }
 
