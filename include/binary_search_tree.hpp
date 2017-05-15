@@ -7,6 +7,7 @@ struct Node
 {
 	Node<T>* leftNode;
 	Node<T>* rightNode;
+	Node<T>* parentNode;
 	T value;
 
 	Node(T value)
@@ -14,6 +15,7 @@ struct Node
 		this->value = value;
 		leftNode = nullptr;
 		rightNode = nullptr;
+		parentNode = nullptr;
 	}
 };
 
@@ -44,6 +46,7 @@ public:
 	void outfile(Node<T>* root, std::ostream& outfile) const;
 	void out(std::string filename) const;
 	void paintTree(const Node<T>* node, int level) const;
+	void deleteNode(const T& value);
 };
 
 template <typename T>
@@ -107,19 +110,20 @@ Node<T>* BinarySearchTree<T>::rightNode_() const
 template <typename T>
 void BinarySearchTree<T>::insertElement(Node<T>* &node, const T &value)
 {
-	if (node)
+	Node<T>* parent = nullptr;
+	Node<T>* currNode = node;
+
+	while(currNode)
 	{
-		if (value < node->value)
-			insertElement(node->leftNode, value);
-		else if (value > node->value)
-			insertElement(node->rightNode, value);
+		if (value < currNode->value)
+			currNode = currNode->leftNode;
+		else if (value > currNode->value)
+			currNode = currNode->rightNode;
 		else
 			return;
 	}
-	else
-	{
-		node = new Node<T>(value);
-	}
+	currNode = new Node<T>*(value);
+	currNode->parent = parent;
 }
 
 template <typename T>
@@ -141,7 +145,7 @@ Node<T>*  BinarySearchTree<T>::findElement(const T& value) const
 		{
 			if (currNode->value < value)
 				currNode = currNode->rightNode;
-			else 
+			else
 				currNode = currNode->leftNode;
 		}
 	}
@@ -212,5 +216,38 @@ void BinarySearchTree<T>::paintTree(const Node<T>* node, int level) const
 		}
 		std::cout << node->value << std::endl;
 		paintTree(node->leftNode, level++);
+	}
+}
+
+template <typename T>
+void BinarySearchTree<T>::deleteNode(const T& value)
+{
+	Node<T> *currNode = findElement(value);
+
+	if (currNode->leftNode == nullptr && currNode->rightNode == nullptr)
+	{
+		if (currNode->parentNode->leftNode == currNode)
+			currNode->parentNode->leftNode = nullptr;
+		if (currNode->parentNode->rightNode == currNode)
+			currNode->parentNode->rightNode = nullptr;
+		currNode = nullptr;
+	}
+
+	else if (currNode->rightNode == nullptr)
+	{
+		if (currNode->parentNode->leftNode == currNode)
+			currNode->parentNode->leftNode = currNode->leftNode;
+		if (currNode->parentNode->rightNode == currNode)
+			currNode->parentNode->rightNode = currNode->leftNode;
+	}
+
+	else
+	{
+		Node <T>* minNode = currNode->rightNode;
+		while (minNode->leftNode)
+			minNode = minNode->leftNode;
+		T val = minNode->value;
+		deleteNode(minNode->value);
+		currNode->value = val;
 	}
 }
