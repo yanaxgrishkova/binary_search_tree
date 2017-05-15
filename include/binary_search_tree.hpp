@@ -122,7 +122,7 @@ void BinarySearchTree<T>::insertElement(Node<T>* &node, const T &value)
 		else
 			return;
 	}
-	currNode = new Node<T>*(value);
+	currNode = new Node<T> (value);
 	currNode->parent = parent;
 }
 
