@@ -165,7 +165,7 @@ void BinarySearchTree<T>::infile(std::string filename)
 {
 	std::ifstream infile;
 	infile.open(filename);
-	if (!fin.is_open())
+	if (!infile)
 		throw logic_error("The file isn't find");
 	T value;
 	int count;
