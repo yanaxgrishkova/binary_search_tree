@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 
+
 template <typename T>
 struct Node
 {
@@ -24,6 +25,7 @@ private:
 	Node<T>* _root;
 	void destroyTree(Node<T>* node);
 	void insertElement(Node<T>* &node, const T &value);
+	Node<T>* findPrev(Node<T>* &node, const T& value);
 	Node<T>* findElement(const T& value) const;
 
 public:
@@ -40,10 +42,13 @@ public:
 	void insert(const T& value);
 	bool isFound(const T& value) const;
 
+	Node<T>* findPrev(const T& value);
+
 	void infile(std::string filename);
 	void outfile(Node<T>* root, std::ostream& outfile) const;
 	void out(std::string filename) const;
 	void paintTree(const Node<T>* node, int level) const;
+	void deleteNode(const T& value);
 };
 
 template <typename T>
@@ -116,10 +121,7 @@ void BinarySearchTree<T>::insertElement(Node<T>* &node, const T &value)
 		else
 			return;
 	}
-	else
-	{
-		node = new Node<T>(value);
-	}
+	else node = new Node<T>(value);
 }
 
 template <typename T>
@@ -141,7 +143,7 @@ Node<T>*  BinarySearchTree<T>::findElement(const T& value) const
 		{
 			if (currNode->value < value)
 				currNode = currNode->rightNode;
-			else 
+			else
 				currNode = currNode->leftNode;
 		}
 	}
@@ -213,4 +215,68 @@ void BinarySearchTree<T>::paintTree(const Node<T>* node, int level) const
 		std::cout << node->value << std::endl;
 		paintTree(node->leftNode, level++);
 	}
+}
+
+template <typename T>
+void BinarySearchTree<T>::deleteNode(const T& value)
+{
+	Node<T> *currNode = findElement(value);
+	Node<T> *parentNode = findPrev(value);
+
+	if (currNode->leftNode == nullptr && currNode->rightNode == nullptr)
+	{
+		if (parentNode->leftNode == currNode)
+			parentNode->leftNode = nullptr;
+		if (parentNode->rightNode == currNode)
+			parentNode->rightNode = nullptr;
+		currNode = nullptr;
+	}
+
+	else if (currNode->rightNode == nullptr)
+	{
+		if (parentNode->leftNode == currNode)
+			parentNode->leftNode = currNode->leftNode;
+		if (parentNode->rightNode == currNode)
+			parentNode->rightNode = currNode->leftNode;
+		currNode = nullptr;
+	}
+
+	else
+	{
+		Node <T>* minNode = currNode->rightNode;
+		while (minNode->leftNode)
+			minNode = minNode->leftNode;
+		T val = minNode->value;
+		deleteNode(minNode->value);
+		currNode->value = val;
+	}
+}
+
+template <typename T>
+Node<T>* BinarySearchTree<T>::findPrev(Node<T>* &node, const T &value)
+{
+	Node<T>* currNode = node;
+
+	if (isFound(value))
+	{
+		if (value < currNode->value)
+			if (value == currNode->leftNode->value)
+				return currNode;
+			else
+				return findPrev(currNode->leftNode, value);
+		else if (value > currNode->value)
+			if (value == currNode->rightNode->value)
+				return currNode;
+			else
+				return findPrev(currNode->rightNode, value);
+		else return nullptr;
+	}
+
+	else return nullptr;
+}
+
+template <typename T>
+Node<T>* BinarySearchTree<T>::findPrev(const T& value)
+{
+	return findPrev(_root, value);
 }
