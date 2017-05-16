@@ -115,7 +115,7 @@ void BinarySearchTree<T>::insertElement(Node<T>* &node, const T &value)
 	if (node)
 	{
 		if (value == node->value)
-			throw logic_error("This is current element!\n");
+			throw std::logic_error("This is current element!\n");
 		if (value < node->value)
 			insertElement(node->leftNode, value);
 		else if (value > node->value)
@@ -166,7 +166,7 @@ void BinarySearchTree<T>::infile(std::string filename)
 	std::ifstream infile;
 	infile.open(filename);
 	if (!infile)
-		throw logic_error("The file isn't find");
+		throw std::logic_error("The file isn't find");
 	T value;
 	int count;
 	infile >> count;
@@ -183,10 +183,10 @@ void BinarySearchTree<T>::out(std::string filename) const
 {
 	std::ofstream ofile(filename);
 	if (!ofile)
-		throw logic_error("The file isn't find\n");
+		throw std::logic_error("The file isn't find\n");
 	int count = count_(_root);
 	if (count == 0)
-		throw logic_error("The tree is empty\n");
+		throw std::logic_error("The tree is empty\n");
 	unsigned int size = size(root);
 	else
 		ofile << count << " ";
@@ -226,7 +226,7 @@ template <typename T>
 void BinarySearchTree<T>::deleteNode(const T& value)
 {
 	if (!isFound)
-		throw logic_error("This element is not found in BST!\n");
+		throw std::logic_error("This element is not found in BST!\n");
 	Node<T> *currNode = findElement(value);
 	Node<T> *parentNode = findPrev(value);
 
