@@ -43,13 +43,13 @@ SCENARIO("deleteNode")
 {
 	BinarySearchTree<int> bst;
 	int size1, size2, size3, size4;
-	tree.insert(5);
-	tree.insert(3);
-	tree.insert(2);
-	tree.insert(4);
-	tree.insert(7);
-	tree.insert(6);
-	tree.insert(8);
+	bst.insert(5);
+	bst.insert(3);
+	bst.insert(2);
+	bst.insert(4);
+	bst.insert(7);
+	bst.insert(6);
+	bst.insert(8);
 	size1 = bst.count_(bst.root ());
 	tree.deleteNode(8);
 	size2 = bst.count_(bst.root ());
