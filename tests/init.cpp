@@ -38,3 +38,27 @@ SCENARIO("count_")
 	count = bst.count_(bst.root ());
 	REQUIRE(count == 1);
 }
+
+SCENARIO("deleteNode")
+{
+	BinarySearchTree<int> bst;
+	int size1, size2, size3, size4;
+	tree.insert(5);
+	tree.insert(3);
+	tree.insert(2);
+	tree.insert(4);
+	tree.insert(7);
+	tree.insert(6);
+	tree.insert(8);
+	size1 = bst.count_(bst.root ());
+	tree.deleteNode(8);
+	size2 = bst.count_(bst.root ());
+	tree.deleteNode(7);
+	size3 = bst.count_(bst.root ());
+	tree.deleteNode(3);
+	size4 = bst.count_(bst.root ());
+	REQUIRE(size1 == 7);
+	REQUIRE(size2 == 6);
+	REQUIRE(size3 == 5);
+	REQUIRE(size4 == 4);
+}
