@@ -7,7 +7,6 @@ struct Node
 {
 	Node<T>* leftNode;
 	Node<T>* rightNode;
-	Node<T>* parentNode;
 	T value;
 
 	Node(T value)
@@ -15,7 +14,6 @@ struct Node
 		this->value = value;
 		leftNode = nullptr;
 		rightNode = nullptr;
-		parentNode = nullptr;
 	}
 };
 
@@ -122,8 +120,7 @@ void BinarySearchTree<T>::insertElement(Node<T>* &node, const T &value)
 		else
 			return;
 	}
-	currNode = new Node<T> (value);
-	currNode->parentNode = parent;
+	else node = new Node<T>(value);
 }
 
 template <typename T>
