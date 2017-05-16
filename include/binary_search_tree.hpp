@@ -187,7 +187,6 @@ void BinarySearchTree<T>::out(std::string filename) const
 	int count = count_(_root);
 	if (count == 0)
 		throw std::logic_error("The tree is empty\n");
-	else
 		ofile << count << " ";
 	outfile(_root, ofile);
 	ofile.close();
@@ -224,7 +223,7 @@ void BinarySearchTree<T>::paintTree(const Node<T>* node, int level) const
 template <typename T>
 void BinarySearchTree<T>::deleteNode(const T& value)
 {
-	if (!isFound)
+	if (isFound(value) == false)
 		throw std::logic_error("This element is not found in BST!\n");
 	Node<T> *currNode = findElement(value);
 	Node<T> *parentNode = findPrev(value);
