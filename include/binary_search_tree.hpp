@@ -187,7 +187,6 @@ void BinarySearchTree<T>::out(std::string filename) const
 	int count = count_(_root);
 	if (count == 0)
 		throw std::logic_error("The tree is empty\n");
-	unsigned int size = size(root);
 	else
 		ofile << count << " ";
 	outfile(_root, ofile);
