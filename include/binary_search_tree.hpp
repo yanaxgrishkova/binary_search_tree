@@ -44,7 +44,7 @@ public:
 
 	Node<T>* findPrev(const T& value);
 
-	friend std::ifstream& infile(std::string filename);
+	std::ifstream& infile(std::string filename);
 	std::ostream& outfile(Node<T>* root, std::ostream& outfile) const;
 	void out(std::string filename) const;
 	void paintTree(const Node<T>* node, int level) const;
@@ -166,21 +166,21 @@ bool BinarySearchTree<T>::isFound(const T& value) const
 template <typename T>
 std::ifstream& BinarySearchTree<T>::infile(std::string filename)
 {
-	std::ifstream infile;
-	infile.open(filename);
-	if (!infile)
+	std::ifstream if;
+	if.open(filename);
+	if (!if)
 		throw std::logic_error("The file isn't find");
 	T value;
 	int count;
 	infile >> count;
 	while (count--)
 	{
-		infile >> value;
+		if >> value;
 		insert(value);
 	}
-	infile.close();
+	if.close();
 	
-	return infile;
+	return if;
 }
 
 template <typename T>
@@ -207,7 +207,7 @@ template <typename T>
 std::ostream& BinarySearchTree<T>::outfile(Node<T>* root, std::ostream& ofile) const
 {
 	if (!root)
-		return;
+		throw std::logic_error("Binary Search Tree is empty!\n");
 	else
 	{
 		ofile << root->value << " ";
