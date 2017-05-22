@@ -57,8 +57,8 @@ public:
 	void paintTree(const Node<T>* node, int level) const;
 	void deleteNode(const T& value);
 	
-	friend std::ifstream& operator>> <> (std::ifstream& infile, Node<T>* root);
-	friend std::ostream& operator<< <> (std::ostream& outfile, Node<T>* root);
+	friend std::ifstream& operator>> <> (std::ifstream& infile, BinarySearchTree<T>& node);
+	friend std::ostream& operator<< <> (std::ostream& outfile, BinarySearchTree<T>& node);
 };
 
 template <typename T>
@@ -189,9 +189,9 @@ void BinarySearchTree<T>::infile(std::string filename)
 }
 
 template <typename T>
-std::ifstream& operator>> (std::string filename, Node<T>* root)
+std::ifstream& operator>> (std::string filename, BinarySearchTree<T>& node)
 {
-	return root.infile(filename);
+	return node.infile(filename);
 } 
 
 template <typename T>
@@ -222,9 +222,9 @@ void BinarySearchTree<T>::outfile(Node<T>* root, std::ostream& ofile) const
 }
 
 template <typename T>
-std::ostream& operator<< (std::ostream& outfile, Node<T>* root)
+std::ostream& operator<< (std::ostream& outfile, BinarySearchTree<T>& node)
 {
-	return root.outfile(outfile);
+	return node.outfile(outfile);
 }
 
 template <typename T>
