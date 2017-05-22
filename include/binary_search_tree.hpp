@@ -50,8 +50,8 @@ public:
 	void paintTree(const Node<T>* node, int level) const;
 	void deleteNode(const T& value);
 	
-	friend std::ifstream& operator>> (std::ifstream& infile, BinarySearchTree<T>& node);
-	friend std::ostream& operator<< (std::ostream& outfile, BinarySearchTree<T>& node);
+	friend std::ifstream& operator>> <>(std::ifstream& infile, BinarySearchTree<T>& node);
+	friend std::ostream& operator<< <>(std::ostream& outfile, BinarySearchTree<T>& node);
 };
 
 template <typename T>
@@ -172,7 +172,7 @@ std::ifstream& BinarySearchTree<T>::infile(std::string filename)
 		throw std::logic_error("The file isn't find");
 	T value;
 	int count;
-	infile >> count;
+	inf >> count;
 	while (count--)
 	{
 		inf >> value;
