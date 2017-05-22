@@ -166,21 +166,21 @@ bool BinarySearchTree<T>::isFound(const T& value) const
 template <typename T>
 std::ifstream& BinarySearchTree<T>::infile(std::string filename)
 {
-	std::ifstream if;
-	if.open(filename);
-	if (!if)
+	std::ifstream inf;
+	inf.open(filename);
+	if (!inf)
 		throw std::logic_error("The file isn't find");
 	T value;
 	int count;
 	infile >> count;
 	while (count--)
 	{
-		if >> value;
+		inf >> value;
 		insert(value);
 	}
-	if.close();
+	inf.close();
 	
-	return if;
+	return inf;
 }
 
 template <typename T>
