@@ -3,6 +3,13 @@
 #include <string>
 #include <stdexcept>
 
+template <typename T> 
+friend std::ifstream& operator >> <> (std::ifstream& infile, Node<T>* root);
+
+template <typename T>
+friend std::ostream& operator << <> (std::ostream& outfile, Node<T>* root);
+
+
 template <typename T>
 struct Node
 {
@@ -50,7 +57,7 @@ public:
 	void paintTree(const Node<T>* node, int level) const;
 	void deleteNode(const T& value);
 	
-	friend std::ifstream& operator >> <> (std::ifstream& infile, Node<T>* root)
+	friend std::ifstream& operator >> <> (std::ifstream& infile, Node<T>* root);
 	friend std::ostream& operator << <> (std::ostream& outfile, Node<T>* root);
 };
 
