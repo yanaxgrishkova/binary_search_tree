@@ -4,10 +4,10 @@
 #include <stdexcept>
 
 template <typename T> 
-std::ifstream& operator >> <> (std::ifstream& infile, Node<T>* root);
+std::ifstream& operator>> <> (std::ifstream& infile, Node<T>* root);
 
 template <typename T>
-std::ostream& operator << <> (std::ostream& outfile, Node<T>* root);
+std::ostream& operator<< <> (std::ostream& outfile, Node<T>* root);
 
 
 template <typename T>
@@ -57,8 +57,8 @@ public:
 	void paintTree(const Node<T>* node, int level) const;
 	void deleteNode(const T& value);
 	
-	friend std::ifstream& operator >> <> (std::ifstream& infile, Node<T>* root);
-	friend std::ostream& operator << <> (std::ostream& outfile, Node<T>* root);
+	friend std::ifstream& operator>> <> (std::ifstream& infile, Node<T>* root);
+	friend std::ostream& operator<< <> (std::ostream& outfile, Node<T>* root);
 };
 
 template <typename T>
@@ -189,7 +189,7 @@ void BinarySearchTree<T>::infile(std::string filename)
 }
 
 template <typename T>
-std::ifstream& operator >> (std::string filename, Node<T>* root)
+std::ifstream& operator>> (std::string filename, Node<T>* root)
 {
 	return root.infile(filename);
 } 
@@ -222,7 +222,7 @@ void BinarySearchTree<T>::outfile(Node<T>* root, std::ostream& ofile) const
 }
 
 template <typename T>
-std::ostream& operator << (std::ostream& outfile, Node<T>* root)
+std::ostream& operator<< (std::ostream& outfile, Node<T>* root)
 {
 	return root.outfile(outfile);
 }
