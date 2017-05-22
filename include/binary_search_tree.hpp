@@ -3,13 +3,6 @@
 #include <string>
 #include <stdexcept>
 
-template <typename T> 
-std::ifstream& operator>> <> (std::ifstream& infile, Node<T>* root);
-
-template <typename T>
-std::ostream& operator<< <> (std::ostream& outfile, Node<T>* root);
-
-
 template <typename T>
 struct Node
 {
@@ -51,14 +44,14 @@ public:
 
 	Node<T>* findPrev(const T& value);
 
-	void infile(std::string filename);
-	void outfile(Node<T>* root, std::ostream& outfile) const;
+	friend std::ifstream& infile(std::string filename);
+	std::ostream& outfile(Node<T>* root, std::ostream& outfile) const;
 	void out(std::string filename) const;
 	void paintTree(const Node<T>* node, int level) const;
 	void deleteNode(const T& value);
 	
-	friend std::ifstream& operator>> <> (std::ifstream& infile, BinarySearchTree<T>& node);
-	friend std::ostream& operator<< <> (std::ostream& outfile, BinarySearchTree<T>& node);
+	friend std::ifstream& operator>> (std::ifstream& infile, BinarySearchTree<T>& node);
+	friend std::ostream& operator<< (std::ostream& outfile, BinarySearchTree<T>& node);
 };
 
 template <typename T>
@@ -171,7 +164,7 @@ bool BinarySearchTree<T>::isFound(const T& value) const
 }
 
 template <typename T>
-void BinarySearchTree<T>::infile(std::string filename)
+std::ifstream& BinarySearchTree<T>::infile(std::string filename)
 {
 	std::ifstream infile;
 	infile.open(filename);
@@ -186,6 +179,8 @@ void BinarySearchTree<T>::infile(std::string filename)
 		insert(value);
 	}
 	infile.close();
+	
+	return infile;
 }
 
 template <typename T>
@@ -209,7 +204,7 @@ void BinarySearchTree<T>::out(std::string filename) const
 }
 
 template <typename T>
-void BinarySearchTree<T>::outfile(Node<T>* root, std::ostream& ofile) const
+std::ostream& BinarySearchTree<T>::outfile(Node<T>* root, std::ostream& ofile) const
 {
 	if (!root)
 		return;
@@ -219,6 +214,8 @@ void BinarySearchTree<T>::outfile(Node<T>* root, std::ostream& ofile) const
 		outfile(root->rightNode, ofile);
 		outfile(root->leftNode, ofile);
 	}
+	
+	return ofile;
 }
 
 template <typename T>
