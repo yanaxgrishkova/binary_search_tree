@@ -51,7 +51,7 @@ public:
 	void deleteNode(const T& value);
 	
 	friend std::ifstream& operator >> (std::ifstream& infile, std::string filename, Node<T>* root)
-	friend std::ofstream& operator << (std::ofstream& outfile, Node<T>* root);
+	friend std::ostream& operator << (std::ostream& outfile, Node<T>* root);
 };
 
 template <typename T>
