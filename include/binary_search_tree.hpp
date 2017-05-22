@@ -4,10 +4,10 @@
 #include <stdexcept>
 
 template <typename T> 
-friend std::ifstream& operator >> <> (std::ifstream& infile, Node<T>* root);
+std::ifstream& operator >> <> (std::ifstream& infile, Node<T>* root);
 
 template <typename T>
-friend std::ostream& operator << <> (std::ostream& outfile, Node<T>* root);
+std::ostream& operator << <> (std::ostream& outfile, Node<T>* root);
 
 
 template <typename T>
@@ -189,9 +189,9 @@ void BinarySearchTree<T>::infile(std::string filename)
 }
 
 template <typename T>
-std::ifstream& operator >> (std::ifstream& infile, Node<T>* root)
+std::ifstream& operator >> (std::string filename, Node<T>* root)
 {
-	return root.infile(infile);
+	return root.infile(filename);
 } 
 
 template <typename T>
